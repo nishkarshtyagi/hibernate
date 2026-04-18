@@ -1,0 +1,53 @@
+package Entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Student {
+    @Id
+    private int roll;
+    private String name;
+    private int age;
+
+    Student(int roll, String name, int age) {
+        this.age = age;
+        this.roll = roll;
+        this.name = name;
+    }
+
+    public int getRoll() {
+        return roll;
+    }
+
+    public void setRoll(int roll) {
+        this.roll = roll;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Student(int roll, int age, String name) {
+        this.roll = roll;
+        this.age = age;
+        this.name = name;
+    }
+
+    public Student()
+    {
+
+    }
+}

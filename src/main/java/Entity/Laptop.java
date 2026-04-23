@@ -2,7 +2,10 @@ package Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+
+import java.util.List;
 
 @Entity
 public class Laptop {
@@ -10,14 +13,14 @@ public class Laptop {
     private int id;
     private String model;
     private int ram;
-    @ManyToOne
-    private Student student;
+    @ManyToMany
+    private List<Student> student;
 
-    public Student getStudent() {
+    public List<Student> getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(List<Student> student) {
         this.student = student;
     }
 

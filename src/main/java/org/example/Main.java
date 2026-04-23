@@ -1,6 +1,7 @@
 package org.example;
 
 
+import Entity.Address;
 import Entity.Student;
 import ch.qos.logback.core.joran.spi.SimpleRuleStore;
 import org.hibernate.Session;
@@ -12,8 +13,8 @@ import java.rmi.StubNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
-
-        Student student = new Student(1,21,"Nishkarsh Tyagi");
+        Address address=new Address("A-42","Master Colony Hrabansh Nagar","Ghaziabad");
+        Student student = new Student(1,21,"Nishkarsh Tyagi",address);
 
         Configuration configuration = new Configuration();
 
@@ -35,12 +36,13 @@ public class Main {
         session.load(s1,1);
         System.out.println(s1.getName());
 
-        //to Update the data
+//        to Update the data
 //        Transaction transaction = session.beginTransaction();
-        Student s2=new Student(1,21,"Sparsh Tyagi");
+        Address address2=new Address("A-42","Master Colony","Ghaziabad");
+        Student s2=new Student(1,21,"Sparsh Tyagi",address2);
         session.merge(s2);
-        transaction.commit();
-        session.close();
+//        transaction.commit();
+//        session.close();
 
         //to delete the data
 

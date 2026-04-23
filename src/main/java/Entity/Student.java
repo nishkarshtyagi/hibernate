@@ -5,24 +5,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
+import java.util.List;
+
 @Entity
 public class Student {
     @Id
     private int roll;
     private String name;
     private int age;
-    @OneToOne
-    private Laptop laptop;
+    @OneToMany(mappedBy = "student")
+    private List<Laptop> laptop;
 
-    public  Laptop getLaptop() {
+    public  List<Laptop> getLaptop() {
         return laptop;
     }
 
-    public void setLaptop(Laptop laptop) {
+    public void setLaptop(List<Laptop> laptop) {
         this.laptop = laptop;
     }
 
-    public Student(int roll, String name, int age, Laptop laptop) {
+    public Student(int roll, String name, int age,List<Laptop> laptop) {
         this.roll = roll;
         this.name = name;
         this.age = age;

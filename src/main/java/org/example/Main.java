@@ -11,11 +11,21 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.rmi.StubNotFoundException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+
+
         Laptop laptop1=new Laptop(1,"Hp",256);
-        Student student1=new Student(1,"Nishkarsh Tyagi",21,laptop1);
+        Laptop laptop2=new Laptop(2,"Dell",512);
+
+        List<Laptop> student1Lap= List.of(laptop1,laptop2);
+        Student student1=new Student(1,"Nishkarsh Tyagi",21,student1Lap);
+        laptop1.setStudent(student1);
+        laptop2.setStudent(student1);
+
 
         Configuration configuration=new Configuration();
         configuration.addAnnotatedClasses(Student.class);
@@ -27,11 +37,12 @@ public class Main {
 
         Transaction transaction = session.beginTransaction();
         session.persist(laptop1);
+        session.persist(laptop2);
         session.persist(student1);
 
-        Student student2=new Student();
-        session.load(student2,1);
-        System.out.println(student2.toString());
+//        Student student2=new Student();
+//        session.load(student2,1);
+//        System.out.println(student2.toString());
         transaction.commit();
         session.close();
     }
